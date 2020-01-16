@@ -10,7 +10,7 @@ namespace ETicaretBasic.DAL.EntityFramework
 {
     public class ETicaretDBContext : DbContext
     {
-        public ETicaretDBContext() : base("Server=.;Database=ETicaretBasic;Trusted_Connection=True")
+        public ETicaretDBContext() : base("Server=.;Database=ECommerceBasic;Trusted_Connection=True")
         {
       
         }

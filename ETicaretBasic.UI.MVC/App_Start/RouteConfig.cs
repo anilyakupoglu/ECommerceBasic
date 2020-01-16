@@ -16,13 +16,15 @@ namespace ETicaretBasic.UI.MVC
             routes.MapRoute(
                name: "Product",
                url: "{controller}/{action}/{id}",
-               defaults: new { controller = "Product", action = "List"}
+               defaults: new { controller = "Product", action = "List"},
+                namespaces: new string[] { "ETicaretBasic.UI.MVC.Areas.Controllers" }
            );
 
             routes.MapRoute(
              name: "Default",
              url: "{controller}/{action}",
-             defaults: new { controller = "Home", action = "Index" }
+             defaults: new { controller = "Home", action = "Index" },
+                namespaces: new string[] { "ETicaretBasic.UI.MVC.Areas.Controllers" }
          );
          
 

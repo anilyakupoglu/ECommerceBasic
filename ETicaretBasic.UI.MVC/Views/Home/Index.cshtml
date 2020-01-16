@@ -12,9 +12,9 @@
 </div>
 
 <div class="container mb-5">
-
-        <div class="col-md-9 mt-5">
-            @Html.Partial("_products", Model)
+    @Html.ActionLink("Admin Panel", "Index", "Category", new { area = "Admin" }, new { @class = "btn btn-primary" })
+    <div class="col-md-9 mt-5">
+        @Html.Partial("_products", Model)
     </div>
 </div>
 

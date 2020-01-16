@@ -56,7 +56,7 @@
     <Compile Include="EntityFramework\ETicaretDBContext.cs" />
     <Compile Include="Interfaces\ICategoryDAL.cs" />
     <Compile Include="Interfaces\IProductDAL.cs" />
-    <Compile Include="EntityFramework\Migrations\Configuration.cs" />
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
