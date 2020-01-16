@@ -5,7 +5,7 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 <div class="col-md-8">
-    <button class="btn btn-warning float-right mb-2" data-toggle="modal" data-target="#popupNew" data-whatever="getbootstrap">Add New</button>
+    <button class="btn btn-warning float-right mb-2" data-toggle="modal" data-target="#popupNew" data-whatever="getbootstrap"><i class="fas fa-plus-square"></i> Add New</button>
     <table class="table table-bordered">
         <thead class="thead-dark">
             <tr>
@@ -22,7 +22,7 @@
                 <tr>
                     <th scope="row">@item.CategoryID</th>
                     <td>@item.CategoryName</td>
-                    <td><button class="btn btn-primary">Edit</button> <button type="button" id="btnDelete" onclick="javascript: DeleteCategory(@item.CategoryID)" class="btn btn-danger">Delete</button></td>
+                    <td><button class="btn btn-primary"><i class="fas fa-edit"></i> Edit</button> <button type="button" id="btnDelete" onclick="javascript: DeleteCategory(@item.CategoryID)" class="btn btn-danger"><i class="fas fa-trash-alt"></i> Delete</button></td>
                 </tr>
             }
 
