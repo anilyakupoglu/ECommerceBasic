@@ -1,0 +1,52 @@
+﻿@model List<Category>
+
+@{
+    var selected = Url.RequestContext.RouteData.Values["id"];
+}
+
+@*<div class="list-group">
+    <a href="#" class="list-group-item list-group-item-action active">
+        Cras justo odio
+    </a>
+    <a href="#" class="list-group-item list-group-item-action">Dapibus ac facilisis in</a>
+    <a href="#" class="list-group-item list-group-item-action">Morbi leo risus</a>
+    <a href="#" class="list-group-item list-group-item-action">Porta ac consectetur ac</a>
+    <a href="#" class="list-group-item list-group-item-action disabled">Vestibulum at eros</a>
+    </div>*@
+
+<div class="list-group">
+
+    @foreach (Category item in Model)
+    {
+        if (selected != null)
+        {
+            if (item.CategoryID == int.Parse(selected.ToString()))
+            {
+                <a href="/Product/List/@item.CategoryID" class="list-group-item list-group-item-action active">
+                    @item.CategoryName
+                    <i class="fas fa-chevron-circle-right float-right"></i>
+                </a>
+            }
+            else
+            {
+                <a href="/Product/List/@item.CategoryID" class="list-group-item list-group-item-action">
+                    @item.CategoryName
+                    <i class="fas fa-chevron-circle-right float-right"></i>
+                </a>
+            }
+        }
+        else
+        {
+            <a href="/Product/List/@item.CategoryID" class="list-group-item list-group-item-action">
+                @item.CategoryName
+                <i class="fas fa-chevron-circle-right float-right"></i>
+            </a>
+        }
+
+
+    }
+    <a href="/Product/List" class="list-group-item list-group-item-action">
+       <span>Tüm Ürünleri Getir</span>
+        <i class="fas fa-list-ul float-right"></i>
+    </a>
+</div>

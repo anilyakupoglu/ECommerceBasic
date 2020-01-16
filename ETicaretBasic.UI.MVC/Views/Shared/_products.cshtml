@@ -1,0 +1,24 @@
+﻿@model List<Product>
+
+
+
+    <div class="row">
+        @foreach (Product item in Model)
+        {
+
+            <div class="col-md-4 mb-3">
+                <div class="card">
+                    <img class="card-img-top" src="~/Upload/@item.Image" alt="@item.ProductName" />
+                    <div class="card-body">
+                        <h5 class="card-title">@Html.ActionLink(item.ProductName, "Details", "Product", new { id = item.ProductID }, new { alt = item.ProductName, @class="cart-titlee" }) </h5>
+                        <p class="card-text description">@item.Description</p>
+                    </div>
+                    <div class="card-footer">
+                        <span class="product-price"><strong><i class="fas fa-lira-sign"></i> @item.Price</strong>@Html.ActionLink("Ürünü İncele", "Details", "Product", new { id = item.ProductID }, new { alt = item.ProductName, @class = "btn btn-primary btn-sm float-right" })</span>
+                    </div>
+                </div>
+            </div>
+
+
+        }
+    </div>

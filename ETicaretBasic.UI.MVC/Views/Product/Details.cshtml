@@ -1,0 +1,106 @@
+﻿@using ETicaretBasic.UI.MVC.ViewModels
+@model ProductViewModel
+@{
+    ViewBag.Title = "Details";
+}
+
+<div class="container mb-5">
+    <div class="row mt-5">
+        <div class="col-md-6">
+            <img src="~/Upload/@Model.Image" class="img-fluid rounded">
+        </div>
+        <div class="col-md-6">
+            <div class="row mt-1">
+                <div class="col-md-12">
+                    <h2>@Model.ProductName</h2>
+                </div>
+            </div>
+            <div class="row mt-1">
+                <div class="col-md-12">
+                    <span class="badge badge-primary">Stokta var  </span>
+                    @if (Model.Stock == 50)
+                    {
+                        <span class="badge badge-warning">Son 50 Ürün!</span>
+                    }
+
+                    <span class="product-number">#564556</span>
+                </div>
+            </div>
+            <div class="row mt-1">
+                <div class="col-md-12">
+                    <div id="description">
+                        @Model.Description
+                    </div>
+                </div>
+
+            </div>
+            <div class="row mt-2">
+                <div class="col-md-4">
+                    <span style="color:#FFD700;">
+                        <i class="fas fa-star"></i>
+                    </span>
+                    <span style="color:#FFD700;">
+                        <i class="fas fa-star"></i>
+                    </span>
+                    <span style="color:#FFD700;">
+                        <i class="fas fa-star"></i>
+                    </span>
+                    <span style="color:#FFD700;">
+                        <i class="fas fa-star"></i>
+                    </span>
+                    <span style="color:#FFD700;">
+                        <i class="fas fa-star-half-alt"></i>
+                    </span>
+                    <span class="badge badge-success">53</span>
+                </div>
+                <div id="write-review" class="col-md-4">
+                    <a href="#">Write Review</a>
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col-md-12">
+                    <h4 id="product-price"><i class="fas fa-lira-sign 2x"></i> @Model.Price</h4>
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col-md-12">
+                    <button class="btn btn-warning">
+                        <i class="fas fa-cart-plus"></i>
+                        Add To Cart
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row mt-5">
+        <div class="col-md-12">
+            <div class="bd-example bd-example-tabs">
+                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" id="desc-tab" data-toggle="tab" href="#desc" role="tab" aria-controls="desc" aria-selected="true">Description</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="payment-tab" data-toggle="tab" href="#payment" role="tab" aria-controls="payment" aria-selected="false">Payment Details</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="comments-tab" data-toggle="tab" href="#comments" role="tab" aria-controls="comments" aria-selected="false">Comments</a>
+                    </li>
+                </ul>
+                <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade show active" id="desc" role="tabpanel" aria-labelledby="desc-tab">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse arcu magna, lacinia at lobortis eget, posuere et mauris. Cras eu nibh a mauris aliquet placerat in a risus. Sed elementum sem vitae risus venenatis vestibulum. Pellentesque non vestibulum dolor, vel pretium mi. Mauris malesuada accumsan nulla nec tincidunt. In iaculis dui sit amet turpis fringilla eleifend. Morbi eleifend ex diam, vel auctor eros suscipit non.</p>
+                        <p>Maecenas elit risus, pulvinar ac neque ac, porttitor condimentum urna. Donec mattis pharetra malesuada. Interdum et malesuada fames ac ante ipsum primis in faucibus. Donec orci ligula, rutrum quis interdum non, efficitur vitae magna. Nam libero mi, suscipit at vehicula at, tincidunt ac est. In blandit aliquet risus at tristique. Integer convallis mauris lorem. Nunc ut sagittis ligula. Morbi hendrerit metus eu dolor gravida euismod. Aliquam fermentum ullamcorper tortor, ac tempor quam lacinia nec.</p>
+                        <p>Quisque tempus accumsan commodo. Vivamus eleifend aliquam quam eget condimentum. Ut non diam a enim feugiat eleifend. Etiam quis dui quam. Mauris sit amet arcu placerat, aliquam ligula nec, aliquam libero. Fusce eu accumsan libero. Proin lacinia at neque hendrerit posuere. Vivamus vel enim commodo, tempus odio sed, convallis massa. Nullam scelerisque sodales erat, sed tempus risus elementum ut. Fusce eu consequat libero.</p>
+                        <p>Maecenas a arcu non eros vehicula suscipit interdum sed dolor. Nullam vitae dictum velit. Nunc euismod urna dui, eget interdum libero convallis id. Vestibulum malesuada, ante non hendrerit tincidunt, ligula nibh hendrerit massa, sit amet luctus mi eros in eros. Sed placerat enim ut justo interdum, ut volutpat felis finibus. Pellentesque faucibus tellus eget dui iaculis vehicula. Donec sagittis nibh non gravida consequat. Pellentesque posuere blandit magna eu fringilla. Proin ac metus erat. In hac habitasse platea dictumst. Phasellus vitae odio mauris. Cras eget venenatis eros. Vivamus ultrices fermentum sem, non laoreet eros varius sit amet. Etiam vitae leo erat. Cras ut nisl ac tortor auctor auctor. Ut pretium lacus nec lectus suscipit porttitor.</p>
+                    </div>
+                    <div class="tab-pane fade" id="payment" role="tabpanel" aria-labelledby="payment-tab">
+                        <p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit. Keytar helvetica VHS salvia yr, vero magna velit sapiente labore stumptown. Vegan fanny pack odio cillum wes anderson 8-bit, sustainable jean shorts beard ut DIY ethical culpa terry richardson biodiesel. Art party scenester stumptown, tumblr butcher vero sint qui sapiente accusamus tattooed echo park.</p>
+                    </div>
+                    <div class="tab-pane fade" id="comments" role="tabpanel" aria-labelledby="comments-tab">
+                        <p>Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro fanny pack lo-fi farm-to-table readymade. Messenger bag gentrify pitchfork tattooed craft beer, iphone skateboard locavore carles etsy salvia banksy hoodie helvetica. DIY synth PBR banksy irony. Leggings gentrify squid 8-bit cred pitchfork. Williamsburg banh mi whatever gluten-free, carles pitchfork biodiesel fixie etsy retro mlkshk vice blog. Scenester cred you probably haven't heard of them, vinyl craft beer blog stumptown. Pitchfork sustainable tofu synth chambray yr.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>

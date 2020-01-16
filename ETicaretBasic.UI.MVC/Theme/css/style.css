@@ -1,0 +1,46 @@
+.jumbotron{
+    background-image: url("../img/back.jpg");
+    background-size: cover;
+    height: 350px;
+    color: white;
+}
+.footer> .container {
+    width: auto;
+    max-width: 680px;
+    padding: 0 15px;
+  }
+  
+  .footer {
+    background-color: #f5f5f5;
+  }
+#write-review{
+    margin-left:-40px;
+}
+#product-price{
+    font-size: 28px;
+    color: red;
+}
+.product-price{
+    color:#414141;
+    font-weight:800;
+    font-size:15px;
+
+}
+.card-img-top{
+    height:150px;
+    
+}
+.card{
+    width:265px;
+    height:350px;
+}
+.cart-titlee {
+    font-size: 17px;
+    font-weight: 600;
+    line-height: 1.35em;
+    height: 84px;
+}
+.description {
+    font-size: 14px;
+    height: 80px;
+}
