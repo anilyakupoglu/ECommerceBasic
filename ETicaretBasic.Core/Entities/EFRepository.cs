@@ -28,6 +28,7 @@ namespace ETicaretBasic.Core.Entities
             {
                 //context.Set<TEntity>().Remove(entity);
                 entity.IsActive=false;
+                context.Entry(entity).State = EntityState.Modified;
                 context.SaveChanges();
             }
         }
