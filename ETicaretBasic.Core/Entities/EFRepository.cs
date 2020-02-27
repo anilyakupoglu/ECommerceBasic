@@ -27,7 +27,7 @@ namespace ETicaretBasic.Core.Entities
             using (TContext context = new TContext())
             {
                 //context.Set<TEntity>().Remove(entity);
-                entity.IsActive = false;
+                entity.IsActive=false;
                 context.SaveChanges();
             }
         }

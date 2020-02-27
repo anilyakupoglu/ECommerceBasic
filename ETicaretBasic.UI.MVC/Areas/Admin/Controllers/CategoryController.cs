@@ -33,8 +33,17 @@ namespace ETicaretBasic.UI.MVC.Areas.Admin.Controllers
         [HttpPost]
         public JsonResult DeleteCategory(int catID)
         {
-            _categoryService.DeleteByID(catID);
-            return Json("ok", JsonRequestBehavior.AllowGet);
+            bool deleted = _categoryService.DeleteByID(catID);
+
+            if (deleted)
+            {
+                return Json("ok", JsonRequestBehavior.AllowGet);
+            }
+            else
+            {
+                return Json("no", JsonRequestBehavior.AllowGet);
+            }
+
         }
 
         [HttpGet]
@@ -54,7 +63,7 @@ namespace ETicaretBasic.UI.MVC.Areas.Admin.Controllers
         [HttpPost]
         public JsonResult UpdateCategory(Category cat)
         {
-           
+
             bool update = _categoryService.Update(cat);
             if (update)
             {

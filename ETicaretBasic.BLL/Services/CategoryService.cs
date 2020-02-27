@@ -36,13 +36,13 @@ namespace ETicaretBasic.BLL.Services
             {
                 Category cat = GetByID(entityID);
                 _catDAL.Delete(cat);
+                return true;
             }
             catch (Exception)
             {
-
                 return false;
             }
-            return true;
+      
         }
 
         public List<Category> GetAll()
