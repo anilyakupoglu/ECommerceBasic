@@ -1,7 +1,9 @@
 ﻿using ETicaretBasic.BLL.Interface;
 using ETicaretBasic.Entities;
+using ETicaretBasic.UI.MVC.Areas.Admin.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -25,7 +27,7 @@ namespace ETicaretBasic.UI.MVC.Areas.Admin.Controllers
         public JsonResult Index(Category cat)
         {
             _categoryService.Add(cat);
-            return Json("ok",JsonRequestBehavior.AllowGet);
+            return Json("ok", JsonRequestBehavior.AllowGet);
         }
 
         [HttpPost]
@@ -34,5 +36,36 @@ namespace ETicaretBasic.UI.MVC.Areas.Admin.Controllers
             _categoryService.DeleteByID(catID);
             return Json("ok", JsonRequestBehavior.AllowGet);
         }
+
+        [HttpGet]
+        public ActionResult UpdateCategory(int id)
+        {
+            Category cat = _categoryService.GetByID(id);
+            //CategoryViewModel viewModel = new CategoryViewModel
+            //{
+            //    CategoryID = cat.CategoryID,
+            //    CategoryName = cat.CategoryName,
+            //    Description = cat.Description
+            //};
+
+            ViewBag.Cat = cat;
+            return View();
+        }
+        [HttpPost]
+        public JsonResult UpdateCategory(Category cat)
+        {
+           
+            bool update = _categoryService.Update(cat);
+            if (update)
+            {
+                return Json("ok", JsonRequestBehavior.AllowGet);
+            }
+            else
+            {
+                return Json("no", JsonRequestBehavior.AllowGet);
+            }
+        }
+
+
     }
 }

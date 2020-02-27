@@ -1,4 +1,5 @@
-﻿using ETicaretBasic.Entities;
+﻿using ETicaretBasic.DAL.EntityFramework.Mapping;
+using ETicaretBasic.Entities;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -10,9 +11,9 @@ namespace ETicaretBasic.DAL.EntityFramework
 {
     public class ETicaretDBContext : DbContext
     {
-        public ETicaretDBContext() : base("Server=.;Database=ECommerceBasic;Trusted_Connection=True")
+        public ETicaretDBContext() : base("Server=.;Database=ECommerceBasic2;Trusted_Connection=True")
         {
-      
+          
         }
 
         public virtual DbSet<Category> Categories { get; set; }
@@ -20,7 +21,7 @@ namespace ETicaretBasic.DAL.EntityFramework
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-       
+            modelBuilder.Configurations.Add(new CategoryMapping());
         }
 
     }

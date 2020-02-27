@@ -19,11 +19,14 @@
 
             @foreach (Category item in Model)
             {
-                <tr>
-                    <th scope="row">@item.CategoryID</th>
-                    <td>@item.CategoryName</td>
-                    <td><button class="btn btn-primary"><i class="fas fa-edit"></i> Edit</button> <button type="button" id="btnDelete" onclick="javascript: DeleteCategory(@item.CategoryID)" class="btn btn-danger"><i class="fas fa-trash-alt"></i> Delete</button></td>
-                </tr>
+                if (item.IsActive == true)
+                {
+                    <tr>
+                        <th scope="row">@item.CategoryID</th>
+                        <td>@item.CategoryName</td>
+                        <td><a class="btn btn-primary" href="/Admin/Category/UpdateCategory/@item.CategoryID"><i class="fas fa-edit"></i> Edit</a> <button id="btnDelete" onclick="javascript: DeleteCategory(@item.CategoryID)" class="btn btn-danger"><i class="fas fa-trash-alt"></i> Delete</button></td>
+                    </tr>
+                }
             }
 
         </tbody>
@@ -54,35 +57,38 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" id="btnSave" class="btn btn-primary">Save</button>
+                <button type="button" id="btnSave" onclick="javascript: AddCategory()" class="btn btn-primary">Save</button>
             </div>
         </div>
     </div>
 </div>
 
+
+
 @section scripts
 {
     <script>
+    
 
-            $("#btnSave").click(function () {
-                var category = {
-                    "CategoryName": $("input[name=catName]").val(),
-                    "Description": $("input[name=description]").val()
-                };
-                $.ajax({
-                    type: "POST",
-                    url: "/Admin/Category/Index",
-                    data: category,
-                    success: function (data) {
-                        if (data == "ok") {
-                            alert("Kayıt Başarılı");
-                            window.location.href = "/Admin/Category/Index";
-                        } else {
-                            alert("Hata")
-                        }
+        function AddCategory() {
+            var category = {
+                "CategoryName": $("input[name=catName]").val(),
+                "Description": $("input[name=description]").val()
+            };
+            $.ajax({
+                type: "POST",
+                url: "/Admin/Category/Index",
+                data: category,
+                success: function (data) {
+                    if (data == "ok") {
+                        alert("Kayıt Başarılı");
+                        window.location.href = "/Admin/Category/Index";
+                    } else {
+                        alert("Hata")
                     }
-                });
+                }
             });
+        };
 
         function DeleteCategory(CategoryID) {
             var con = confirm("Are you sure?");
@@ -99,7 +105,7 @@
                         alert("Silme işlemi başarısız");
                     }
                 });
-        }
             }
+        };
     </script>
 }

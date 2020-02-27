@@ -54,6 +54,7 @@
     <Compile Include="EntityFramework\Concrete\CategoryRepository.cs" />
     <Compile Include="EntityFramework\Concrete\ProductRepository.cs" />
     <Compile Include="EntityFramework\ETicaretDBContext.cs" />
+    <Compile Include="EntityFramework\Mapping\CategoryMapping.cs" />
     <Compile Include="Interfaces\ICategoryDAL.cs" />
     <Compile Include="Interfaces\IProductDAL.cs" />
     <Compile Include="Migrations\Configuration.cs" />

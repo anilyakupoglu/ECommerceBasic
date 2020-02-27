@@ -19,25 +19,26 @@ namespace ETicaretBasic.UI.MVC.Controllers
             _productService = productService;
             _categoryService = categoryService;
         }
-  
+
         public ActionResult Details(int id)
         {
-          
+
             Product product = _productService.GetByID(id);
 
-            ProductViewModel productView = new ProductViewModel()
-            {
-                CategoryID = product.CategoryID,
-                Description = product.Description,
-                Image = product.Image,
-                Price = product.Price,
-                ProductID = product.ProductID,
-                ProductName = product.ProductName,
-                Stock = product.Stock,
-                Category = product.Category
-            };
+            ViewBag.Product = product;
+            //ProductViewModel productView = new ProductViewModel()
+            //{
+            //    CategoryID = product.CategoryID,
+            //    Description = product.Description,
+            //    Image = product.Image,
+            //    Price = product.Price,
+            //    ProductID = product.ProductID,
+            //    ProductName = product.ProductName,
+            //    Stock = product.Stock,
+            //    Category = product.Category
+            //};
 
-            return View(productView);
+            return View();
         }
         public ActionResult List(int id = 0)
         {
