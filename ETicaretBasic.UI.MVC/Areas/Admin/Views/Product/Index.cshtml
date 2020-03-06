@@ -1,0 +1,138 @@
+﻿
+
+@using ETicaretBasic.Entities
+@model List<Product>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<div class="col-md-12">
+    <button class="btn btn-warning float-right mb-2" data-toggle="modal" data-target="#popupNew" data-whatever="getbootstrap"><i class="fas fa-plus-square"></i> Add Product</button>
+    <table class="table table-bordered">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">Image</th>
+                <th scope="col">Product Name</th>
+                <th scope="col">Price</th>
+                <th scope="col">Stock Status</th>
+                <th scope="col">Description</th>
+                <th scope="col">Operations</th>
+            </tr>
+        </thead>
+        <tbody>
+
+
+            @foreach (Product item in Model)
+            {
+                <tr>
+                    <td>@item.Image</td>
+                    <td>@item.ProductName</td>
+                    <td>@item.Price TL</td>
+                    <td>@item.Stock Unit</td>
+                    <td>@item.Description</td>
+                    <td><a class="btn btn-primary" href="/Admin/Category/UpdateCategory/@item.ProductID"><i class="fas fa-edit"></i> Edit</a> <button id="btnDelete" onclick="javascript: DeleteCategory(@item.ProductID)" class="btn btn-danger"><i class="fas fa-trash-alt"></i> Delete</button></td>
+                </tr>
+
+            }
+
+        </tbody>
+    </table>
+</div>
+
+@* Popup Menu *@
+<div class="modal fade" id="popupNew" tabindex="-1" role="dialog" aria-labelledby="newCategoryLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="newCategoryLabel">Add New Category</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">Product Name:</label>
+                        <input type="text" name="proName" class="form-control" id="product-name">
+                    </div>
+                    <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">Unit Price:</label>
+                        <input type="number" name="proPrice" class="form-control" id="unit-price">
+                    </div>
+                    <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">Stock:</label>
+                        <input type="number" name="proStock" class="form-control" id="stock">
+                    </div>
+                    <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">Image Url:</label>
+                        <input type="text" name="proImg" class="form-control" id="product-image">
+                    </div>
+                    <div class="form-group">
+                        <label for="sel1">Select Category:</label>
+                            @Html.DropDownList(" ", (IEnumerable<SelectListItem>)ViewBag.Categories, new { @class = "form-control", id = "ddlCat" })
+                    </div>
+                    <div class="form-group">
+                        <label for="message-text" class="col-form-label">Description:</label>
+                        <input type="text" name="description" class="form-control" id="description-text">
+                    </div>
+
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" id="btnSave" onclick="javascript: AddCategory()" class="btn btn-primary">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+@section scripts
+{
+    <script>
+
+
+        function AddCategory() {
+            var product = {
+                "ProductName": $("input[name=proName]").val(),
+                "Price": $("input[name=proPrice]").val(),
+                "Stock": $("input[name=proStock]").val(),
+                "Image": $("input[name=proImage]").val(),
+                "CategoryID": $("#ddlCat").val(),
+                "Description": $("input[name=description]").val(),
+            };
+            $.ajax({
+                type: "POST",
+                url: "/Admin/Product/AddProduct",
+                data: product,
+                success: function (data) {
+                    if (data == "ok") {
+                        alert("Kayıt Başarılı");
+                        window.location.href = "/Admin/Product/Index";
+                    } else {
+                        alert("Hata")
+                    }
+                }
+            });
+        };
+
+        function DeleteCategory(CategoryID) {
+            var con = confirm("Are you sure?");
+            if (con == true) {
+                $.ajax({
+                    type: "POST",
+                    url: "/Admin/Category/DeleteCategory",
+                    data: { CatID: CategoryID },
+                    success: function () {
+                        alert("Silme işlemi başarılı");
+                        window.location.href = "/Admin/Category/Index";
+                    },
+                    error: function () {
+                        alert("Silme işlemi başarısız");
+                    }
+                });
+            }
+        };
+    </script>
+}

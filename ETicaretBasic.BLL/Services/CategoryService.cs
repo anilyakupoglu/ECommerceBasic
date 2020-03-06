@@ -44,7 +44,10 @@ namespace ETicaretBasic.BLL.Services
             }
       
         }
-
+        public List<Category> GetActiveCategories(bool IsActive)
+        {
+            return _catDAL.GetAll(a => a.IsActive == IsActive).ToList();
+        }
         public List<Category> GetAll()
         {
             return _catDAL.GetAll().ToList();

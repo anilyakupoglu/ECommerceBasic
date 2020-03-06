@@ -9,5 +9,6 @@ namespace ETicaretBasic.BLL.Interface
 {
     public interface ICategoryService:IServiceBase<Category>
     {
+        List<Category> GetActiveCategories(bool IsActive);
     }
 }

@@ -14,39 +14,42 @@
     <a href="#" class="list-group-item list-group-item-action disabled">Vestibulum at eros</a>
     </div>*@
 
-<div class="list-group">
+    <div class="list-group">
 
-    @foreach (Category item in Model)
-    {
-        if (selected != null)
+        @foreach (Category item in Model)
         {
-            if (item.CategoryID == int.Parse(selected.ToString()))
+            if (item.IsActive == true)
             {
-                <a href="/Product/List/@item.CategoryID" class="list-group-item list-group-item-action active">
-                    @item.CategoryName
-                    <i class="fas fa-chevron-circle-right float-right"></i>
-                </a>
-            }
-            else
-            {
-                <a href="/Product/List/@item.CategoryID" class="list-group-item list-group-item-action">
-                    @item.CategoryName
-                    <i class="fas fa-chevron-circle-right float-right"></i>
-                </a>
+                if (selected != null)
+                {
+                    if (item.CategoryID == int.Parse(selected.ToString()))
+                    {
+                        <a href="/Product/List/@item.CategoryID" class="list-group-item list-group-item-action active">
+                            @item.CategoryName
+                            <i class="fas fa-chevron-circle-right float-right"></i>
+                        </a>
+                    }
+                    else
+                    {
+                        <a href="/Product/List/@item.CategoryID" class="list-group-item list-group-item-action">
+                            @item.CategoryName
+                            <i class="fas fa-chevron-circle-right float-right"></i>
+                        </a>
+                    }
+                }
+                else
+                {
+                    <a href="/Product/List/@item.CategoryID" class="list-group-item list-group-item-action">
+                        @item.CategoryName
+                        <i class="fas fa-chevron-circle-right float-right"></i>
+                    </a>
+                }
+
+
             }
         }
-        else
-        {
-            <a href="/Product/List/@item.CategoryID" class="list-group-item list-group-item-action">
-                @item.CategoryName
-                <i class="fas fa-chevron-circle-right float-right"></i>
-            </a>
-        }
-
-
-    }
-    <a href="/Product/List" class="list-group-item list-group-item-action">
-       <span>Tüm Ürünleri Getir</span>
-        <i class="fas fa-list-ul float-right"></i>
-    </a>
-</div>
+        <a href="/Product/List" class="list-group-item list-group-item-action">
+            <span>Tüm Ürünleri Getir</span>
+            <i class="fas fa-list-ul float-right"></i>
+        </a>
+    </div>

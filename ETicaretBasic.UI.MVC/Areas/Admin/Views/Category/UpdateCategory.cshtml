@@ -5,8 +5,49 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
+<div class="col-md-5 mt-5">
+    <div class="card card-primary">
+        <div class="card-header">
+            <h3 class="card-title">Update Category</h3>
+        </div>
+        <!-- /.card-header -->
+        <!-- form start -->
+        <form role="form">
+            <div class="card-body">
+                <div class="form-group">
+                    <fieldset disabled>
+                        <div class="form-group row">
+                            <label for="disabledTextInput" class="col-sm-2 col-form-label">Category ID</label>
+                            <div class="col-sm-10">
+                                <input type="text" name="catID" class="form-control" value="@ViewBag.Cat.CategoryID">
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+                <div class="form-group row">
+                    <label for="catName" class="col-sm-2 col-form-label">Category Name</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" name="categoryName" value="@ViewBag.Cat.CategoryName">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="desc" class="col-sm-2 col-form-label">Description</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" name="description" value="@ViewBag.Cat.Description">
+                    </div>
 
-    <div class="col-md-5 mt-5 ml-5">
+                </div>
+
+            </div>
+            <!-- /.card-body -->
+
+            <div class="card-footer">
+                <button class="btn btn-primary float-right" type="submit" id="btnUpdate">Güncelle</button>
+            </div>
+        </form>
+    </div>
+    </div>
+    @*<div class="col-md-5 mt-5 ml-5">
         <form>
             <fieldset disabled>
                 <div class="form-group row">
@@ -31,7 +72,7 @@
 
         </form>
         <button class="btn btn-primary" type="submit" id="btnUpdate">Güncelle</button>
-    </div>
+    </div>*@
 
 
 @section scripts
